@@ -29,3 +29,6 @@
   color: var(--color-gray);
 }
 
+.cookieLayer__base--hidden{
+  display:none
+}

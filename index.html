@@ -2,14 +2,12 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="http://slowfil.es/file?type=css&delay=1000&sync-in-head" />
   <link rel="stylesheet" href="styles/index.css" />
   <link rel="preload" href="background.jpg" as="image">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
   <link rel="preload" href="fonts/alegreya-v29-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/alegreya-v29-latin-900.woff2" as="font" type="font/woff2" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
-  <script src="https://slowfil.es/file?type=js&delay=2000"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuex"></script>
@@ -51,30 +49,22 @@
       setTimeout(function() {
         removeStyle(getParent(), STYLE_ID);
       }, timeout);
-    }(window, document, "body {opacity: 0 !important}", 3000));
+    }(window, document, "body {opacity: 0 !important}", 3));
   </script>
   <script>
     // advertisment mock
     const initAd = () => {
       const adSpace = document.querySelector('.main__advertising');
       const gif = '<div style="width:400px;max-width:100%;"><div style="height:0;padding-bottom:52.4%;position:relative;"><iframe width="500" height="262" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6wy03z"></iframe></div></div>';
-      setTimeout(() => adSpace.innerHTML = gif, 3000);
+      setTimeout(() => adSpace.innerHTML = gif, 3);
     };
-    // Slow JS
-    function wait(ms) {
-      var start = Date.now(),
-      now = start;
-      while (now - start < ms) {
-        now = Date.now();
-      }
-    };
+
 
     // async CSS
     function loadMobileCSS() {
       $('head').append(`<link rel="stylesheet" type="text/css" href="styles/mobile.css">`);
     };
 
-    wait(2000);
     window.addEventListener('load', () => {
       initAd();
       loadMobileCSS();
@@ -88,9 +78,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
 </head>
-<body>
+<body class="no-scroll">
   <div id="cookie-vue">
-    <cookie-layer class="cookieLayer__base" v-show="displayCookieBox" v-on:accept="acceptCookies()"/>
   </div>
   <header class="header__base">
     <div class="header__content">
@@ -124,7 +113,7 @@
     
     <div class="main__content">
       <div class="main__news main__section">
-        <marquee width="100%" direction="left" style="line-height: 30px;background-color: darkred;color: red;"></marquee>
+        <marquee id="breaking-news" width="100%" direction="left" style="line-height: 30px;background-color: darkred;color: red;"></marquee>
       </div>
       
       <div class="main__hero main__section">
@@ -141,11 +130,11 @@
         <script src="script/carousel.js"></script>
         
         <div class="hero__teaser div2">
-          <img src="https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif" data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&h=400&q=100" class="hero__img lazy">
+          <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&h=400&q=100" data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&h=400&q=100" class="hero__img lazy">
           <div class="hero__teaserText">Top 10 waterfalls to analyse this week</div>
         </div>
         <div class="hero__teaser div3">
-          <img src="https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif" data-src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&w=1180&q=80" class="hero__img lazy">
+          <img src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&w=1180&q=80" data-src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&w=1180&q=80" class="hero__img lazy">
           <div class="hero__teaserText">Bouncing rates increased signifincantly last week</div>
         </div>
       </div>
