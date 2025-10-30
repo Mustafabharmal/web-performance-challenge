@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://meyerweb.com">
   
   <!-- Preload critical fonts -->
   <link rel="preload" href="fonts/alegreya-v29-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -21,11 +22,14 @@
   <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></noscript>
   
-  <!-- Critical CSS -->
-  <link rel="stylesheet" href="styles/index.css" />
-  
   <!-- Google Fonts with display swap -->
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical CSS -->
+  <link rel="stylesheet" href="styles/index.css">
+  
+  <!-- Defer mobile CSS -->
+  <link rel="stylesheet" href="styles/mobile.css">
   
   <!-- Defer non-critical scripts -->
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -35,46 +39,6 @@
   <script defer src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
   <script>
-    // Adobe Target pre-hiding code snippet 
-    ;(function(win, doc, style, timeout) {
-      var STYLE_ID = 'at-body-style';
-
-      function getParent() {
-        return doc.getElementsByTagName('head')[0];
-      }
-
-      function addStyle(parent, id, def) {
-        if (!parent) {
-          return;
-        }
-
-        var style = doc.createElement('style');
-        style.id = id;
-        style.innerHTML = def;
-        parent.appendChild(style);
-      }
-
-      function removeStyle(parent, id) {
-        if (!parent) {
-          return;
-        }
-
-        var style = doc.getElementById(id);
-
-        if (!style) {
-          return;
-        }
-
-        parent.removeChild(style);
-      }
-
-      addStyle(getParent(), STYLE_ID, style);
-      setTimeout(function() {
-        removeStyle(getParent(), STYLE_ID);
-      }, timeout);
-    }(window, document, "body {opacity: 0 !important}", 3));
-  </script>
-  <script>
     // advertisment mock
     const initAd = () => {
       const adSpace = document.querySelector('.main__advertising');
@@ -82,18 +46,8 @@
       setTimeout(() => adSpace.innerHTML = gif, 3);
     };
 
-
-    // async CSS
-    function loadMobileCSS() {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'styles/mobile.css';
-      document.head.appendChild(link);
-    };
-
     window.addEventListener('load', () => {
       initAd();
-      loadMobileCSS();
     });
   </script>
 </head>
@@ -103,7 +57,7 @@
   <header class="header__base">
     <div class="header__content">
       <a class="header__logo" href="#" aria-label="The Rum Diary Homepage">
-        <img class="header__image" src="./logo.png" alt="The Rum Diary Logo">
+        <img class="header__image" src="./logo.png" alt="The Rum Diary Logo" width="438" height="229">
       </a>
       <div class="header__navigation">
         <ul class="navigation__list">
@@ -132,7 +86,7 @@
     
     <div class="main__content">
       <div class="main__news main__section">
-        <marquee id="breaking-news" width="100%" direction="left" style="line-height: 30px;background-color: darkred;color: red;"></marquee>
+        <marquee id="breaking-news" width="100%" direction="left" style="line-height: 30px;background-color: darkred;color: red;height: 30px;display: block;">Loading news...</marquee>
       </div>
       
       <div class="main__hero main__section">
@@ -140,51 +94,50 @@
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide lazy"><img src="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&w=616&q=80" alt="Restaurant interior with elegant lighting" width="616" height="411"></div>
-            <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=616&q=80" alt="Modern restaurant setting" width="616" height="411"></div>
-            <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&auto=format&fit=crop&w=616&q=80" alt="Fine dining experience" width="616" height="411"></div>
+            <div class="swiper-slide"><img src="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=60" alt="Restaurant interior with elegant lighting" width="616" height="411" fetchpriority="high"></div>
+            <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=616&q=60" alt="Modern restaurant setting" width="616" height="411" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&auto=format&fit=crop&w=616&q=60" alt="Fine dining experience" width="616" height="411" loading="lazy"></div>
           </div>
           <div class="swiper-text">Local restaurants finally optimising time to first bite</div>
         </div>
         <script src="script/carousel.js"></script>
         
         <div class="hero__teaser div2">
-          <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=80" data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=80" class="hero__img lazy" alt="Beautiful waterfall in nature" width="616" height="400" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=60" data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=60" class="hero__img lazy" alt="Beautiful waterfall in nature" width="616" height="400" loading="lazy">
           <div class="hero__teaserText">Top 10 waterfalls to analyse this week</div>
         </div>
         <div class="hero__teaser div3">
-          <img src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=80" data-src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=80" class="hero__img lazy" alt="Analytics dashboard showing performance metrics" width="616" height="400" loading="lazy" fetchpriority="high">
+          <img src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=60" data-src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=60" class="hero__img lazy" alt="Analytics dashboard showing performance metrics" width="616" height="400" loading="lazy">
           <div class="hero__teaserText">Bouncing rates increased signifincantly last week</div>
         </div>
       </div>
 
       <div class="main__teasers main__section">
         <article class="teaser__base">
-          <img class="teaser__image" src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=80" alt="First party event celebration" loading="lazy"><hr>
+          <img class="teaser__image" src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=60" alt="First party event celebration" width="537" height="358" loading="lazy"><hr>
           <h1 class="teaser__title">First Party</h1>
           <div class="teaser__text"></div>
           <button class="teaser__link">Read more</button>
         </article>
         <article class="teaser__base">
-          <img class="teaser__image" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=80" alt="Second party gathering" loading="lazy"><hr>
+          <img class="teaser__image" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=60" alt="Second party gathering" width="537" height="358" loading="lazy"><hr>
           <h1 class="teaser__title">Second Party</h1>
           <div class="teaser__text"></div>
           <button class="teaser__link">Read more</button>
         </article>
         <article class="teaser__base">
-          <img class="teaser__image" src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=80" alt="Third party event" loading="lazy"><hr>
+          <img class="teaser__image" src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=60" alt="Third party event" width="537" height="358" loading="lazy"><hr>
           <h1 class="teaser__title">Third Party</h1>
           <div class="teaser__text"></div>
           <button class="teaser__link">Read more</button>
         </article>
       </div>
       
-      <div class="main__weather main__section">
-        <a class="weatherwidget-io" href="https://forecast7.com/en/48d1411d58/munich/" data-label_1="MUNICH" data-label_2="WEATHER" data-theme="original" >MUNICH WEATHER</a>
-        <script>
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://blackhole.webpagetest.org/';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-        </script>
-      </div>
+      
+      <section class="main__weather main__section">
+        <h2 class="visually-hidden">Weather forecast</h2>
+        <div id="ww_f875a7a760709" v='1.3' loc='auto' a='{"t":"responsive","lang":"en","sl_lpl":1,"ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>More forecasts: <a href="https://oneweather.org/orlando/30_days/" id="ww_f875a7a760709_u" target="_blank">Orlando 30 day forecast</a></div><script async src="https://app3.weatherwidget.org/js/?id=ww_f875a7a760709"></script>
+      </section>
       
       <div class="main__video main__section">
         <iframe src="https://player.vimeo.com/video/44265326?h=1e8b36c00b&autoplay=1&loop=1&byline=0&muted=1&controls=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Lighthouse video demonstration" loading="lazy"></iframe>
