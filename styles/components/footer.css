@@ -14,4 +14,17 @@
 
 .footer__link {
   margin-right: 20px;
+  padding: 12px 16px; /* Increase touch target size */
+  text-decoration: none;
+  color: #ffffff; /* Ensure sufficient contrast */
+  display: inline-block;
+  min-height: 44px; /* Meet accessibility standards */
+  min-width: 44px;
+  line-height: 1.5;
+}
+
+.footer__link:hover,
+.footer__link:focus {
+  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.1);
 }
