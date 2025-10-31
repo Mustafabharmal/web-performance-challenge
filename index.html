@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Rum Diary - Web Performance Challenge</title>
-  <meta name="description" content="A web performance testing challenge featuring articles, weather, videos and more. Test site for performance optimization techniques." />
+  <meta name="description"
+    content="A web performance testing challenge featuring articles, weather, videos and more. Test site for performance optimization techniques." />
   <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https:; img-src 'self' data: https:; frame-src https:; font-src 'self' https://fonts.gstatic.com;" /> -->
   <meta http-equiv="Cache-Control" content="public, max-age=86400" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="theme-color" content="#0D6392" />
 
   <!-- Google Fonts with display swap -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" media="print"
+    onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap">
+  </noscript>
 
   <!-- Inline Critical CSS -->
    <style>
@@ -19,34 +32,57 @@
   <link rel="preload" as="image" href="logo.svg" media="(max-width: 750px)">
   <link rel="preload" as="image" href="assets/bite.webp" media="(min-width: 751px)">
   <!-- <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-  <script defer src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <!-- <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script> -->
+  <script async src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" onload="initSwiper()"></script>
 
-  
-  <!-- Defer non-critical scripts -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <!-- <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"></noscript> -->
-  
+  <!-- Defer non-critical styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" media="print"
+    onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+  </noscript>
+
+  <script>
+    function initSwiper() {
+      new Swiper('.swiper', {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        }
+      });
+    }
+  </script>
+
   <script>
     // Advertisement mock
     const initAd = () => {
       const adSpace = document.querySelector('.main__advertising');
-      const gif = '<div style="width:400px;max-width:100%;"><div style="height:0;padding-bottom:52.4%;position:relative;"><iframe width="500" height="262" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6wy03z" title="Advertisement meme" loading="lazy"></iframe></div></div>';
-      setTimeout(() => adSpace.innerHTML = gif, 3);
+      const gif = '<div style="width:400px;max-width:100%;"><div style="height:0;padding-bottom:52.4%;position:relative;"><iframe width="500" height="262" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6wy03z" title="Advertisement meme" loading="lazy" fetchpriority="low"></iframe></div></div>';
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          adSpace.innerHTML = gif;
+        });
+      } else {
+        setTimeout(() => adSpace.innerHTML = gif, 1000);
+      }
     };
 
-    window.addEventListener('load', () => {
+    if (document.readyState === 'complete') {
       initAd();
-    });
+    } else {
+      window.addEventListener('load', initAd, { passive: true });
+    }
   </script>
 </head>
+
 <body class="no-scroll">
   <div id="cookie-vue">
   </div>
   <header class="header__base">
     <div class="header__content">
       <a class="header__logo" href="#" aria-label="The Rum Diary Homepage">
-        <img class="header__image" src="./logo-optimized.png" alt="The Rum Diary Logo" >
+        <img class="header__image" src="./logo-optimized.png" alt="The Rum Diary Logo" width="250" height="130"
+          fetchpriority="high">
       </a>
       <div class="header__navigation">
         <ul class="navigation__list">
@@ -72,89 +108,151 @@
 
   <main class="main__base">
     <div class="main__advertising"></div>
-    
+
     <div class="main__content">
       <div class="main__news main__section">
-        <marquee id="breaking-news" width="100%" direction="left" style="line-height: 30px;background-color: darkred;color: red;height: 30px;display: block;">Loading news...</marquee>
+        <marquee id="breaking-news" width="100%" direction="left"
+          style="line-height: 30px;background-color: darkred;color: red;height: 30px;display: block;">Loading news...
+        </marquee>
       </div>
-      
+
       <div class="main__hero main__section">
         <div class="hero__carousel div1 swiper">
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide"><img src="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30" alt="Restaurant interior with elegant lighting" width="616" height="411" fetchpriority="high"></div>
-            <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=616&q=30" alt="Modern restaurant setting" width="616" height="411" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&auto=format&fit=crop&w=616&q=30" alt="Fine dining experience" width="616" height="411" loading="lazy"></div>
+            <div class="swiper-slide">
+              <picture>
+                <source
+                  srcset="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=616&q=30"
+                  type="image/avif">
+                <source
+                  srcset="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+                  type="image/webp">
+                <img
+                  src="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=616&q=30"
+                  alt="Restaurant interior with elegant lighting" width="616" height="411" fetchpriority="high">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source
+                  srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fm=avif&fit=crop&w=616&q=30"
+                  type="image/avif">
+                <source
+                  srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fm=webp&fit=crop&w=616&q=30"
+                  type="image/webp">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fit=crop&w=616&q=30"
+                  alt="Modern restaurant setting" width="616" height="411" loading="lazy">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source
+                  srcset="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&fm=avif&fit=crop&w=616&q=30"
+                  type="image/avif">
+                <source
+                  srcset="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&fm=webp&fit=crop&w=616&q=30"
+                  type="image/webp">
+                <img src="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&fit=crop&w=616&q=30"
+                  alt="Fine dining experience" width="616" height="411" loading="lazy">
+              </picture>
+            </div>
           </div>
           <div class="swiper-text">Local restaurants finally optimising time to first bite</div>
         </div>
-        
+
         <div class="hero__teaser div2">
-          <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30" data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30" class="hero__img lazy" alt="Beautiful waterfall in nature" width="616" height="400" loading="lazy">
+          <img
+            src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+            data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+            class="hero__img lazy" alt="Beautiful waterfall in nature" width="616" height="400" loading="lazy">
           <div class="hero__teaserText">Top 10 waterfalls to analyse this week</div>
         </div>
         <div class="hero__teaser div3">
-          <img src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30" data-src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30" class="hero__img lazy" alt="Analytics dashboard showing performance metrics" width="616" height="400" loading="lazy">
+          <img
+            src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+            data-src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+            class="hero__img lazy" alt="Analytics dashboard showing performance metrics" width="616" height="400"
+            loading="lazy">
           <div class="hero__teaserText">Bouncing rates increased signifincantly last week</div>
         </div>
       </div>
 
       <div class="main__teasers main__section">
         <article class="teaser__base">
-          <img class="teaser__image" src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30" alt="First party event celebration" width="537" height="358" loading="lazy"><hr>
+          <img class="teaser__image"
+            src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30"
+            alt="First party event celebration" width="537" height="358" loading="lazy">
+          <hr>
           <h1 class="teaser__title">First Party</h1>
           <div class="teaser__text"></div>
           <button class="teaser__link">Read more</button>
         </article>
         <article class="teaser__base">
-          <img class="teaser__image" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30" alt="Second party gathering" width="537" height="358" loading="lazy"><hr>
+          <img class="teaser__image"
+            src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30"
+            alt="Second party gathering" width="537" height="358" loading="lazy">
+          <hr>
           <h1 class="teaser__title">Second Party</h1>
           <div class="teaser__text"></div>
           <button class="teaser__link">Read more</button>
         </article>
         <article class="teaser__base">
-          <img class="teaser__image" src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30" alt="Third party event" width="537" height="358" loading="lazy"><hr>
+          <img class="teaser__image"
+            src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30"
+            alt="Third party event" width="537" height="358" loading="lazy">
+          <hr>
           <h1 class="teaser__title">Third Party</h1>
           <div class="teaser__text"></div>
           <button class="teaser__link">Read more</button>
         </article>
       </div>
-      
-      
+
+
       <section class="main__weather main__section">
         <h2 class="visually-hidden">Weather forecast</h2>
-          <!-- <div id="ww_f875a7a760709" v='1.3' loc='auto' a='{"t":"responsive","lang":"en","sl_lpl":1,"ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>More forecasts: <a href="https://oneweather.org/orlando/30_days/" id="ww_f875a7a760709_u" target="_blank">Orlando 30 day forecast</a></div><script async src="https://app3.weatherwidget.org/js/?id=ww_f875a7a760709"></script> -->
+        <!-- <div id="ww_f875a7a760709" v='1.3' loc='auto' a='{"t":"responsive","lang":"en","sl_lpl":1,"ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>More forecasts: <a href="https://oneweather.org/orlando/30_days/" id="ww_f875a7a760709_u" target="_blank">Orlando 30 day forecast</a></div><script async src="https://app3.weatherwidget.org/js/?id=ww_f875a7a760709"></script> -->
       </section>
-      
+
       <div class="main__video main__section">
         <div class="video-container" style="width: 640px; height: 360px; flex-shrink: 0;">
-           <div class="video-placeholder"></div>
-        <video width="640" height="360" controls preload="metadata">
-          <source src="./assets/Lighthouse.mp4" type="video/mp4">
-        </video>
+          <div class="video-container" style="width:640px; height:360px;">
+            <div class="video-placeholder" style="background:url('./assets/video-placeholder.webp') center/cover no-repeat;
+                        width:100%;height:100%;cursor:pointer;">
+            </div>
+
+            <video width="640" height="360" preload="none" controls>
+              <source src="./assets/Lighthouse.mp4" type="video/mp4">
+            </video>
+          </div>
+
         </div>
         <div class="form__base">
-          <div class="form__intro">Something about lighthouses, describing point of the video we are putting here to prove how awesome they really are, no.</div>
+          <div class="form__intro">Something about lighthouses, describing point of the video we are putting here to
+            prove how awesome they really are, no.</div>
           <div class="from__control">
             <label class="form__label" for="name-input">Name</label>
             <input type="text" id="name-input" name="name" />
           </div>
           <div class="from__control">
-            <label class="form__label" for="lighthouse-textarea">Please share with us why do you think lighthouses are awesome:</label>
+            <label class="form__label" for="lighthouse-textarea">Please share with us why do you think lighthouses are
+              awesome:</label>
             <textarea id="lighthouse-textarea" name="lighthouse-comment"></textarea>
           </div>
-          <a class="form__button" id="button" onclick="alert('Submitting using way too much JavaScript...')" role="button" tabindex="0">Submit</a>
+          <a class="form__button" id="button" onclick="alert('Submitting using way too much JavaScript...')"
+            role="button" tabindex="0">Submit</a>
         </div>
       </div>
   </main>
-  
+
   <div class="disclaimer__base">
     <p class="disclaimer__text">
-      This site is made for the purpose of web performance and accessibility testing challeng and it is full of bad practices on purpose.
+      This site is made for the purpose of web performance and accessibility testing challeng and it is full of bad
+      practices on purpose.
     </p>
   </div>
-  
+
   <div class="footer__base">
     <div class="footer__content">
       <div class="footer__menu">
@@ -166,5 +264,40 @@
     </div>
   </div>
   <script defer src="script/app.js"></script>
-  <script defer src="script/carousel.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.video-container');
+      const placeholder = container?.querySelector('.video-placeholder');
+      const video = container?.querySelector('video');
+
+      if (!container || !video) return;
+
+      // Initially hide the video
+      video.style.display = 'none';
+
+      // Lazy load the video only when in view
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Reveal placeholder (clickable)
+            placeholder?.classList.add('visible');
+
+            // On click, load and play video
+            placeholder?.addEventListener('click', () => {
+              placeholder.style.display = 'none';
+              video.style.display = 'block';
+              video.load();
+              video.play().catch(() => { });
+            });
+
+            // Stop observing after first intersection
+            obs.unobserve(container);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      observer.observe(container);
+    });
+  </script>
+
 </body>
