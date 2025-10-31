@@ -35,18 +35,8 @@
       setTimeout(() => adSpace.innerHTML = gif, 3);
     };
 
-    // Optimized video loading
-    const initLazyVideo = () => {
-      const iframe = document.querySelector('iframe');
-      const src = iframe.getAttribute('data-src');
-      if (src) {
-        iframe.src = src;
-      }
-    };
-
     window.addEventListener('load', () => {
       initAd();
-      initLazyVideo();
     });
   </script>
 </head>
@@ -140,13 +130,9 @@
       <div class="main__video main__section">
         <div class="video-container" style="width: 640px; height: 360px; flex-shrink: 0;">
            <div class="video-placeholder"></div>
-          <iframe style="width: 100%; height: 100%;" 
-                  data-src="https://player.vimeo.com/video/44265326?h=1e8b36c00b&autoplay=0&loop=0&byline=0&muted=0&controls=1" 
-                  width="640" 
-                  height="360" 
-                  frameborder="0" 
-                  title="Lighthouse video demonstration - Click to play"
-                  loading="lazy"></iframe>
+        <video width="640" height="360" controls preload="metadata">
+          <source src="./assets/Lighthouse.mp4" type="video/mp4">
+        </video>
         </div>
         <div class="form__base">
           <div class="form__intro">Something about lighthouses, describing point of the video we are putting here to prove how awesome they really are, no.</div>
