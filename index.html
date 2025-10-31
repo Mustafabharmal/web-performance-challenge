@@ -8,7 +8,7 @@
   <meta name="description"
     content="A web performance testing challenge featuring articles, weather, videos and more. Test site for performance optimization techniques." />
   <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https:; img-src 'self' data: https:; frame-src https:; font-src 'self' https://fonts.gstatic.com;" /> -->
-  <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
+  <meta http-equiv="Cache-Control" content="public, max-age=86400" />
   <link rel="dns-prefetch" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -16,8 +16,6 @@
 
   <!-- Google Fonts with display swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" media="print"
     onload="this.media='all'">
   <noscript>
@@ -31,7 +29,6 @@
   <link rel="stylesheet" media='screen and (max-width: 750px)' href='styles/mobile.css' />
   <link rel="preload" as="image" href="logo.svg" media="(max-width: 750px)">
   <link rel="preload" as="image" href="assets/bite.webp" media="(min-width: 751px)">
-  <!-- <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
   <script async src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" onload="initSwiper()"></script>
 
   <!-- Defer non-critical styles -->
@@ -77,6 +74,13 @@
 
 <body class="no-scroll">
   <div id="cookie-vue">
+    <div class="cookieLayer__content cookieLayer__base">
+        <h2 class="cookieLayer__title">Do you like cookies ?</h2>
+        <p class="cookieLayer__text">This is the best chocolate chip cookies recipe ever! No funny ingredients, no chilling time, etc. Just a simple, straightforward, amazingly delicious, doughy yet still fully cooked, chocolate chip cookie that turns out perfectly every single time!</p>
+        <p class="cookieLayer__text">The first step in making these easy chocolate chip cookies to to combine the dry ingredients in a medium size bowl. Next, cream together butter and sugars. Add the eggs & vanilla and beat to combine. Add dry ingredients and stir until just combined. Then add the chocolate chips and beat until they are evenly distributed throughout the dough.</p>
+        <button class="cookieLayer__button" onclick="acceptCookies()">I solemny swear I will bake these cookies</button>
+        <div class="cookieLayer__disclaimer">This box is made using vanilla JavaScript and is super awesome !!!</div>
+      </div>
   </div>
   <header class="header__base">
     <div class="header__content">
@@ -123,12 +127,6 @@
             <!-- Slides -->
             <div class="swiper-slide">
               <picture>
-                <source
-                  srcset="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=616&q=30"
-                  type="image/avif">
-                <source
-                  srcset="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
-                  type="image/webp">
                 <img
                   src="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=616&q=30"
                   alt="Restaurant interior with elegant lighting" width="616" height="411" fetchpriority="high">
@@ -136,24 +134,12 @@
             </div>
             <div class="swiper-slide">
               <picture>
-                <source
-                  srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fm=avif&fit=crop&w=616&q=30"
-                  type="image/avif">
-                <source
-                  srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fm=webp&fit=crop&w=616&q=30"
-                  type="image/webp">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fit=crop&w=616&q=30"
                   alt="Modern restaurant setting" width="616" height="411" loading="lazy">
               </picture>
             </div>
             <div class="swiper-slide">
               <picture>
-                <source
-                  srcset="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&fm=avif&fit=crop&w=616&q=30"
-                  type="image/avif">
-                <source
-                  srcset="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&fm=webp&fit=crop&w=616&q=30"
-                  type="image/webp">
                 <img src="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&fit=crop&w=616&q=30"
                   alt="Fine dining experience" width="616" height="411" loading="lazy">
               </picture>
@@ -163,77 +149,45 @@
         </div>
 
         <div class="hero__teaser div2">
-          <picture>
-            <source
-              srcset="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=528&q=30"
-              type="image/avif">
-            <source
-              srcset="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=528&q=30"
-              type="image/webp">
-            <img
-              src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=528&q=30"
-              alt="Beautiful waterfall in nature" width="528" height="352" loading="lazy" class="hero__img">
+          <img
+            src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+            data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+            class="hero__img lazy" alt="Beautiful waterfall in nature" width="616" height="400" loading="lazy">
           <div class="hero__teaserText">Top 10 waterfalls to analyse this week</div>
         </div>
         <div class="hero__teaser div3">
-          <picture>
-            <source
-              srcset="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=528&q=30"
-              type="image/avif">
-            <source
-              srcset="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=528&q=30"
-              type="image/webp">
-            <img
-              src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=528&q=30"
-              alt="Analytics dashboard showing performance metrics" width="528" height="352" loading="lazy" class="hero__img">
+          <img
+            src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+            data-src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+            class="hero__img lazy" alt="Analytics dashboard showing performance metrics" width="616" height="400"
+            loading="lazy">
           <div class="hero__teaserText">Bouncing rates increased signifincantly last week</div>
         </div>
       </div>
 
       <div class="main__teasers main__section">
         <article class="teaser__base">
-          <picture>
-            <source 
-              srcset="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=528&q=30"
-              type="image/avif">
-            <source 
-              srcset="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=528&q=30"
-              type="image/webp">
-            <img class="teaser__image"
-              src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=528&q=30"
-              alt="First party event celebration" width="528" height="358" fetchpriority="high">
+          <img class="teaser__image"
+            src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30"
+            alt="First party event celebration" width="537" height="358" loading="lazy">
           <hr>
           <h1 class="teaser__title">First Party</h1>
           <div class="teaser__text"></div>
           <button class="teaser__link">Read more</button>
         </article>
         <article class="teaser__base">
-          <picture>
-            <source
-              srcset="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=528&q=30"
-              type="image/avif">
-            <source
-              srcset="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=528&q=30"
-              type="image/webp">
-            <img class="teaser__image"
-              src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=528&q=30"
-              alt="Second party gathering" width="528" height="352" loading="lazy">
+          <img class="teaser__image"
+            src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30"
+            alt="Second party gathering" width="537" height="358" loading="lazy">
           <hr>
           <h1 class="teaser__title">Second Party</h1>
           <div class="teaser__text"></div>
           <button class="teaser__link">Read more</button>
         </article>
         <article class="teaser__base">
-          <picture>
-            <source
-              srcset="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=528&q=30"
-              type="image/avif">
-            <source
-              srcset="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=528&q=30"
-              type="image/webp">
-            <img class="teaser__image"
-              src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=528&q=30"
-              alt="Third party event" width="528" height="352" loading="lazy">
+          <img class="teaser__image"
+            src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=537&q=30"
+            alt="Third party event" width="537" height="358" loading="lazy">
           <hr>
           <h1 class="teaser__title">Third Party</h1>
           <div class="teaser__text"></div>
