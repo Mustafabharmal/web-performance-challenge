@@ -5,6 +5,7 @@ const CONTENT_ARTICLE_TEASERS = [
   "This is an article about third party that happened this weekend" ];
 
 const closeBox = () => {
+  initAd();
   document.body.classList.remove('no-scroll');
   document.querySelector('.cookieLayer__base').classList.add('cookieLayer__base--hidden');
 };
@@ -26,17 +27,22 @@ const dynamicContent = () => {
   });
 };
 
-// const cookieLayerInit = () => {
-//     const template = ``
-
-//   const cookieNotice = document.querySelector('#cookie-vue');
-//   cookieNotice.innerHTML = template;
-// };
+// Advertisement mock
+  const initAd = () => {
+    const adSpace = document.querySelector('.main__advertising');
+    const gif = '<div style="width:400px;max-width:100%;"><div style="height:0;padding-bottom:52.4%;position:relative;"><iframe width="500" height="262" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6wy03z" title="Advertisement meme" loading="lazy" fetchpriority="low"></iframe></div></div>';
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        adSpace.innerHTML = gif;
+      });
+    } else {
+      setTimeout(() => adSpace.innerHTML = gif, 1000);
+    }
+  };
 
 
 const initApp = () => {
   dynamicContent();
-  // cookieLayerInit();
 };
 
 initApp();
