@@ -11,11 +11,10 @@
   <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
   <link rel="dns-prefetch" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <!-- <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin> -->
   <meta name="theme-color" content="#0D6392" />
 
   <!-- Google Fonts with display swap -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" media="print"
     onload="this.media='all'">
   <noscript>
@@ -29,7 +28,7 @@
   <link rel="stylesheet" media='screen and (max-width: 750px)' href='styles/mobile.css' />
   <link rel="preload" as="image" href="logo.svg" media="(max-width: 750px)">
   <link rel="preload" as="image" href="assets/bite.webp" media="(min-width: 751px)">
-  <script async src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" onload="initSwiper()"></script>
+  <!-- <script async src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" onload="initSwiper()"></script> -->
 
   <!-- Defer non-critical styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" media="print"
@@ -39,15 +38,15 @@
   </noscript>
 
   <script>
-    function initSwiper() {
-      new Swiper('.swiper', {
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false
-        }
-      });
-    }
+    // function initSwiper() {
+    //   new Swiper('.swiper', {
+    //     loop: true,
+    //     autoplay: {
+    //       delay: 5000,
+    //       disableOnInteraction: false
+    //     }
+    //   });
+    // }
   </script>
 
   <script>
@@ -128,32 +127,26 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=616&q=30"
+                  srcset="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=avif&fit=crop&w=616&q=80"
                   type="image/avif">
                 <source
-                  srcset="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=30"
+                  srcset="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=webp&fit=crop&w=616&q=80"
                   type="image/webp">
                 <img
-                  src="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=616&q=30"
-                  alt="Restaurant interior with elegant lighting" width="616" height="411" fetchpriority="high">
+                  src="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fit=crop&w=616&q=80"
+                  alt="Restaurant interior with elegant lighting" width="616" height="411" fetchpriority="high" decoding="async">
               </picture>
             </div>
             <div class="swiper-slide">
               <picture>
-                 <source
-                  srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fm=avif&fit=crop&w=616&q=30"
+                <source
+                  srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fm=avif&fit=crop&w=616&q=80"
                   type="image/avif">
                 <source
-                  srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fm=webp&fit=crop&w=616&q=30"
+                  srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fm=webp&fit=crop&w=616&q=80"
                   type="image/webp">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fit=crop&w=616&q=30"
-                  alt="Modern restaurant setting" width="616" height="411" loading="lazy">
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <img src="https://images.unsplash.com/photo-1559329007-40df8ac64d04?ixlib=rb-1.2.1&fit=crop&w=616&q=30"
-                  alt="Fine dining experience" width="616" height="411" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&fit=crop&w=616&q=80"
+                  alt="Modern restaurant setting" width="616" height="411" loading="lazy" decoding="async">
               </picture>
             </div>
           </div>
@@ -166,27 +159,27 @@
             <source
               type="image/avif"
               srcset="
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=avif&w=350&q=40 350w,
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=avif&w=616&q=40 616w,
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=avif&w=900&q=40 900w">
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=avif&w=350&q=75 350w,
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=avif&w=616&q=75 616w,
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=avif&w=700&q=75 700w">
             <!-- WebP -->
             <source
               type="image/webp"
               srcset="
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=webp&w=350&q=50 350w,
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=webp&w=616&q=50 616w,
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=webp&w=900&q=50 900w">
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=webp&w=350&q=80 350w,
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=webp&w=616&q=80 616w,
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=webp&w=700&q=80 700w">
             <!-- Fallback JPEG -->
             <img
-              src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=jpg&w=616&q=60"
+              src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=jpg&w=616&q=85"
               srcset="
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=jpg&w=350&q=60 350w,
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=jpg&w=616&q=60 616w,
-                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=jpg&w=900&q=60 900w"
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=jpg&w=350&q=85 350w,
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=jpg&w=616&q=85 616w,
+                https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?fm=jpg&w=700&q=85 700w"
               sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 616px"
               alt="Beautiful waterfall in nature"
               class="hero__img lazy"
-              width="616" height="400"
+              width="616" height="411"
               loading="lazy" decoding="async">
           </picture>
 
@@ -200,25 +193,25 @@
             <source
               type="image/avif"
               srcset="
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=avif&w=350&q=40 350w,
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=avif&w=616&q=40 616w,
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=avif&w=900&q=40 900w">
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=avif&w=350&q=75 350w,
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=avif&w=616&q=75 616w,
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=avif&w=700&q=75 700w">
             <source
               type="image/webp"
               srcset="
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=webp&w=350&q=50 350w,
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=webp&w=616&q=50 616w,
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=webp&w=900&q=50 900w">
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=webp&w=350&q=80 350w,
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=webp&w=616&q=80 616w,
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=webp&w=700&q=80 700w">
             <img
-              src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=jpg&w=616&q=60"
+              src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=jpg&w=616&q=85"
               srcset="
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=jpg&w=350&q=60 350w,
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=jpg&w=616&q=60 616w,
-                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=jpg&w=900&q=60 900w"
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=jpg&w=350&q=85 350w,
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=jpg&w=616&q=85 616w,
+                https://images.unsplash.com/photo-1646271912756-44f11896cfea?fm=jpg&w=700&q=85 700w"
               sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 616px"
               alt="Analytics dashboard showing performance metrics"
               class="hero__img lazy"
-              width="616" height="400"
+              width="616" height="411"
               loading="lazy" decoding="async">
           </picture>
 
@@ -238,28 +231,29 @@
           <source
             type="image/avif"
             srcset="
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=avif&w=320&q=40 320w,
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=avif&w=537&q=40 537w,
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=avif&w=800&q=40 800w">
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=avif&w=320&q=75 320w,
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=avif&w=537&q=75 537w,
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=avif&w=600&q=75 600w">
           <!-- WebP -->
           <source
             type="image/webp"
             srcset="
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=webp&w=320&q=50 320w,
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=webp&w=537&q=50 537w,
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=webp&w=800&q=50 800w">
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=webp&w=320&q=80 320w,
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=webp&w=537&q=80 537w,
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=webp&w=600&q=80 600w">
           <!-- JPEG fallback -->
           <img
-            src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=jpg&w=537&q=60"
+            src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=jpg&w=537&q=85"
             srcset="
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=jpg&w=320&q=60 320w,
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=jpg&w=537&q=60 537w,
-              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=jpg&w=800&q=60 800w"
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=jpg&w=320&q=85 320w,
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=jpg&w=537&q=85 537w,
+              https://images.unsplash.com/photo-1631857455684-a54a2f03665f?fm=jpg&w=600&q=85 600w"
             sizes="(max-width: 600px) 100vw, (max-width: 900px) 45vw, 537px"
             alt="First party event celebration"
             class="teaser__image"
             width="537" height="358"
-            loading="lazy" decoding="async">
+            fetchpriority="high"
+            decoding="async">
         </picture>
 
         <hr>
@@ -275,21 +269,21 @@
           <source
             type="image/avif"
             srcset="
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=avif&w=320&q=40 320w,
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=avif&w=537&q=40 537w,
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=avif&w=800&q=40 800w">
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=avif&w=320&q=75 320w,
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=avif&w=537&q=75 537w,
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=avif&w=600&q=75 600w">
           <source
             type="image/webp"
             srcset="
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=webp&w=320&q=50 320w,
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=webp&w=537&q=50 537w,
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=webp&w=800&q=50 800w">
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=webp&w=320&q=80 320w,
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=webp&w=537&q=80 537w,
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=webp&w=600&q=80 600w">
           <img
-            src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=jpg&w=537&q=60"
+            src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=jpg&w=537&q=85"
             srcset="
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=jpg&w=320&q=60 320w,
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=jpg&w=537&q=60 537w,
-              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=jpg&w=800&q=60 800w"
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=jpg&w=320&q=85 320w,
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=jpg&w=537&q=85 537w,
+              https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?fm=jpg&w=600&q=85 600w"
             sizes="(max-width: 600px) 100vw, (max-width: 900px) 45vw, 537px"
             alt="Second party gathering"
             class="teaser__image"
@@ -310,21 +304,21 @@
           <source
             type="image/avif"
             srcset="
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=avif&w=320&q=40 320w,
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=avif&w=537&q=40 537w,
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=avif&w=800&q=40 800w">
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=avif&w=320&q=75 320w,
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=avif&w=537&q=75 537w,
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=avif&w=600&q=75 600w">
           <source
             type="image/webp"
             srcset="
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=webp&w=320&q=50 320w,
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=webp&w=537&q=50 537w,
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=webp&w=800&q=50 800w">
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=webp&w=320&q=80 320w,
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=webp&w=537&q=80 537w,
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=webp&w=600&q=80 600w">
           <img
-            src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=jpg&w=537&q=60"
+            src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=jpg&w=537&q=85"
             srcset="
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=jpg&w=320&q=60 320w,
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=jpg&w=537&q=60 537w,
-              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=jpg&w=800&q=60 800w"
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=jpg&w=320&q=85 320w,
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=jpg&w=537&q=85 537w,
+              https://images.unsplash.com/photo-1496024840928-4c417adf211d?fm=jpg&w=600&q=85 600w"
             sizes="(max-width: 600px) 100vw, (max-width: 900px) 45vw, 537px"
             alt="Third party event"
             class="teaser__image"
@@ -363,12 +357,12 @@
             prove how awesome they really are, no.</div>
           <div class="from__control">
             <label class="form__label" for="name-input">Name</label>
-            <input type="text" id="name-input" name="name" />
+            <input type="text" id="name-input" name="name" autocomplete="name" />
           </div>
           <div class="from__control">
             <label class="form__label" for="lighthouse-textarea">Please share with us why do you think lighthouses are
               awesome:</label>
-            <textarea id="lighthouse-textarea" name="lighthouse-comment"></textarea>
+            <textarea id="lighthouse-textarea" name="lighthouse-comment" autocomplete="off"></textarea>
           </div>
           <a class="form__button" id="button" onclick="alert('Submitting using way too much JavaScript...')"
             role="button" tabindex="0">Submit</a>
