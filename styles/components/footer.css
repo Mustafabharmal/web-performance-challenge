@@ -12,12 +12,11 @@
   max-width: 1200px;
 }
 
+.footer__sponsor,
+.footer__sponsor a,
 .footer__link {
   margin-right: 20px;
-  text-decoration: none;
   color: var(--text-color); 
   display: inline-block;
-  min-height: 44px; 
-  min-width: 44px;
   line-height: 1.5;
 }
