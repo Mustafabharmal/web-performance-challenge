@@ -30,4 +30,16 @@
   .cookieLayer__base {
     bottom: 0;
   }
+
+  .main__video {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .video-container,
+  .form__base {
+    padding: 0;
+    width: 100%;
+  }
 }

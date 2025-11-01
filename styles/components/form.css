@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   padding: 0 40px;
+  width: 50%;
 }
 
 .form__label {
@@ -14,4 +15,22 @@
   border-width: 2px;
   border-style: outset;
   border-color: gray;
+}
+.main__video {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem; 
+}
+
+.video-container {
+  width: 50%;
+  flex-shrink: 0;
+}
+.video-placeholder {
+  background: url('../assets/video-placeholder.webp') center/cover no-repeat;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: block;
+  min-height: 250px; 
 }
