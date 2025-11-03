@@ -22,13 +22,8 @@
   - [Video Optimization](#video-optimization)
   - [Font Loading](#font-loading)
   - [Caching Strategy](#caching-strategy)
-- [Lighthouse Scores](#lighthouse-scores)
-- [PageSpeed Insights Results](#pagespeed-insights-results)
 - [Technical Implementation](#technical-implementation)
-- [Before vs After](#before-vs-after)
 - [Demo](#demo)
-- [Installation & Setup](#installation--setup)
-- [Testing](#testing)
 - [AI Assistance Checklist](#ai-assistance-checklist)
 - [License](#license)
 - [Author](#author)
@@ -221,14 +216,15 @@ Access the optimized website at: [https://mustafabharmal.github.io/web-performan
 
 ### Performance Testing
 Test the current performance using:
-- **[PageSpeed Insights](https://pagespeed.web.dev/)** (Primary testing tool)
-- [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/)
-- [GTmetrix](https://gtmetrix.com/)
+- **[PageSpeed Insights](https://pagespeed.web.dev/)**
+    
+    https://pagespeed.web.dev/analysis/https-mustafabharmal-github-io-web-performance-challenge/95aowzs3r0?form_factor=mobile
+
 
 
 ### Demo Video
 
-Access demo video from the below link. (shared with [ld@rtcamp.com](mailto:ld@rtcamp.com) and [trainers@rtcamp.com](mailto:trainers@rtcamp.com))
+Access demo video from the below link.
 
 [Click to Watch](https://drive.google.com/file/d/1Iy9s0eypd7Mwfm-7Z9vfXxHVV-TWqlJS/view?usp=sharing)
 
