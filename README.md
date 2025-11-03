@@ -221,16 +221,6 @@ Test the current performance using:
     https://pagespeed.web.dev/analysis/https-mustafabharmal-github-io-web-performance-challenge/95aowzs3r0?form_factor=mobile
 
 
-
-### Demo Video
-
-Access demo video from the below link.
-
-[Click to Watch](https://drive.google.com/file/d/1Iy9s0eypd7Mwfm-7Z9vfXxHVV-TWqlJS/view?usp=sharing)
-
-Note: I recommend to watch the video at 2x speed for better experience.
-
-
 ## AI Assistance Checklist
 
 ### Where AI Was Used
