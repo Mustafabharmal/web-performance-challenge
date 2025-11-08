@@ -17,5 +17,14 @@
 
 .teaser__link {
   text-align: end;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.teaser__link:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
