@@ -73,6 +73,10 @@ const initAd = () => {
 };
 
 const closeBox = () => {
+    // Don't prevent scrolling anymore - allow immediate access
+    // Add scroll permission to body if needed
+    document.body.style.overflow = 'auto';
+    
     // Load Swiper stylesheet
     document.head.insertAdjacentHTML(
         "beforeend",
@@ -102,7 +106,7 @@ const closeBox = () => {
 
     initAd();
     dynamicContent();
-    document.body.classList.remove("no-scroll");
+    // Don't prevent scroll - users can now scroll immediately
     document
         .querySelector(".cookieLayer__base")
         .classList.add("cookieLayer__base--hidden");
